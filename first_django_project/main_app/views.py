@@ -1,9 +1,13 @@
 from django.shortcuts import render
 
+from main_app.models import Profile
+
 # Create your views here.
 
 def index(request):
-    return render(request, 'index.html')
+    profile = Profile.objects.last()
+
+    return render(request, 'index.html', {'profile':profile})
 
 def resume(request):
     return render(request, 'resume.html')
